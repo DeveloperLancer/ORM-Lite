@@ -12,8 +12,8 @@ namespace DevLancer\ORMLite;
 
 class Repository
 {
-    private string $entity;
-    private EntityManager $manager;
+    protected string $entity;
+    protected EntityManager $manager;
 
     public function __construct(EntityManager $manager, string $entity)
     {

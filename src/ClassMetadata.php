@@ -65,7 +65,9 @@ class ClassMetadata
         $result = [];
 
         foreach ($annotations[1] as $index => $key) {
-            $result[strtolower($key)] = json_decode($annotations[2][$index], true);
+            $value = json_decode($annotations[2][$index], true);
+            $value = (is_null($value))? $annotations[2][$index] : $value;
+            $result[strtolower($key)] = $value;
         }
 
         return $result;

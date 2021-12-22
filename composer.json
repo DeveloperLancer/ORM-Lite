@@ -1,0 +1,22 @@
+{
+  "name": "dev-lancer/orm-lite",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Jakub Gniecki",
+      "email": "kubuspl@onet.eu"
+    }
+  ],
+  "require": {
+    "php": ">=7.4",
+    "ext-pdo": "*",
+    "ext-json": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "DevLancer\\ORMLite\\": "src/"
+    }
+  }
+}

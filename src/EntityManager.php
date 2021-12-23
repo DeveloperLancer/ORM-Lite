@@ -107,11 +107,12 @@ class EntityManager
                 $value = $entity->{$property['column']};
                 $value = $insertBuilder->convert($value, $property['type']);
                 $insertBuilder->setParameter($property['column'], $value);
-                $insertBuilder->execute();
-                if (isset($columnId[0])) {
-                    $id = $insertBuilder->lastInsertId();
-                    $entity->{$columnId[0]} = $insertBuilder->convert($id, $columnId[1]);
-                }
+            }
+
+            $insertBuilder->execute();
+            if (isset($columnId[0])) {
+                $id = $insertBuilder->lastInsertId();
+                $entity->{$columnId[0]} = $insertBuilder->convert($id, $columnId[1]);
             }
         }
 
@@ -125,10 +126,9 @@ class EntityManager
                 $deleteBuilder
                     ->where(sprintf('%s = :%s', $property['column'], $property['column']))
                     ->setParameter($property['column'], $value);
-
-                $deleteBuilder->execute();
             }
 
+            $deleteBuilder->execute();
             unset($entity);
         }
 
@@ -141,6 +141,7 @@ class EntityManager
                 trigger_error(sprintf("The %s entity cannot be automatically updated because it does not have an identifier (primary key) defined.", get_class($entity)));
                 continue;
             }
+
             $id = $entity->{$columnId[0]};
             $updateBuilder
                 ->where(sprintf('%s = :%s', $columnId[0], $columnId[0]))

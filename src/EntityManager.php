@@ -82,6 +82,11 @@ class EntityManager
         return $this->getRepository($entityName)->find($id);
     }
 
+    public function clear(): void
+    {
+        Container::reset();
+    }
+
     public function remove(object $entity):void
     {
         $this->deleteEvent[] = $entity;

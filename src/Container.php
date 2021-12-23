@@ -14,6 +14,11 @@ class Container
 {
     private static array $container;
 
+    public static function reset()
+    {
+        self::$container = [];
+    }
+
     public static function add($value)
     {
         self::$container[] = $value;
